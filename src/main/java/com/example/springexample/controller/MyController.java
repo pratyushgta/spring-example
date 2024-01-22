@@ -6,7 +6,6 @@
  */
 package com.example.springexample.controller;
 
-import com.example.springexample.SpringExampleApplication;
 import com.example.springexample.entity.Address;
 import com.example.springexample.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,4 +84,46 @@ public class MyController {
         System.out.println(ob5);
         return "<h4 style=\"font-family:verdana; color:darkgoldenrod;\"> Employee details: " + ob5;
     }
+
+    //http://localhost:6363/details6/106/Penguin/Appleland/World/1134
+    @Autowired
+    Employee ob6;
+    @GetMapping("/details6/{empid}/{name}/{city}/{state}/{pin}")
+    String employee_details6(@PathVariable("empid") int id,
+                             @PathVariable("name") String name,
+                             @PathVariable("city") String city,
+                             @PathVariable("state") String state,
+                             @PathVariable("pin") long pin) {
+        ob6.setName(name);
+        ob6.setId(id);
+        Address address = new Address();
+        address.setCity(city);
+        address.setState(state);
+        address.setPin(pin);
+        ob6.setAddress(address);
+
+        return "<h4 style=\"font-family:verdana; color:darkgoldenrod;\"> Employee details 6: " + ob6;
+
+    }
+
+    //http://localhost:6363/details7/query?id=107&name=Pengu&city=Bananaland&state=Mars&pin=6363
+    @Autowired
+    Employee ob7;
+    @GetMapping("/details7/query")
+    String employee_details7(@RequestParam int id,
+                             @RequestParam String name,
+                             @RequestParam String city,
+                             @RequestParam String state,
+                             @RequestParam long pin){
+        ob7.setName(name);
+        ob7.setId(id);
+        Address address = new Address();
+        address.setCity(city);
+        address.setState(state);
+        address.setPin(pin);
+        ob7.setAddress(address);
+
+        return "<h4 style=\"font-family:verdana; color:darkgoldenrod;\"> Employee details 7: " + ob7;
+    }
+
 }

@@ -35,6 +35,7 @@ public class MyController {
         return "<h4 style=\"font-family:verdana; color:teal;\"> Employee details: " + ob1;
     }
 
+
     // MSA-E1-Q2 NOT WORKING
     @Autowired
     Employee ob2;
@@ -42,7 +43,7 @@ public class MyController {
     @PostMapping("/details2")
     public String initEmployee(@RequestBody Employee employee) {
         this.ob2 = employee;
-        return "Object2 initialised!";
+        return "Object2 initialised!" + ob2;
     }
 
     // MSA-E1-Q3
